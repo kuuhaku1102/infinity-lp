@@ -1,0 +1,311 @@
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 契約前の事前ヒアリングフォーム
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+.hearing-form {
+  padding: 60px 0;
+  background: #f8f9fa;
+  
+  @include mq(md) {
+    padding: 100px 0;
+  }
+  
+  // コンテナ
+  &__container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    
+    @include mq(md) {
+      padding: 60px 80px;
+    }
+  }
+  
+  // メインタイトル
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    color: #1a1a1a;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e74c3c;
+    
+    @include mq(md) {
+      font-size: 32px;
+      margin-bottom: 60px;
+    }
+  }
+  
+  // セクション
+  &__section {
+    margin-bottom: 50px;
+    
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  
+  // セクションタイトル
+  &__section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 30px;
+    padding: 12px 20px;
+    background: #f8f9fa;
+    border-left: 4px solid #e74c3c;
+    
+    @include mq(md) {
+      font-size: 20px;
+    }
+  }
+  
+  // フィールド
+  &__field {
+    margin-bottom: 32px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  // ラベル
+  &__label {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 10px;
+    
+    @include mq(md) {
+      font-size: 16px;
+    }
+  }
+  
+  // 必須マーク
+  &__required {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffffff;
+    background: #e74c3c;
+    border-radius: 3px;
+  }
+  
+  // 説明文
+  &__description {
+    font-size: 13px;
+    color: #666666;
+    margin-top: 8px;
+    line-height: 1.6;
+    
+    @include mq(md) {
+      font-size: 14px;
+    }
+  }
+  
+  // テキスト入力
+  &__input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 15px;
+    color: #333333;
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    
+    @include mq(md) {
+      font-size: 16px;
+      padding: 16px 20px;
+    }
+    
+    &::placeholder {
+      color: #999999;
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: #e74c3c;
+      box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+    }
+    
+    // 日付入力
+    &--date {
+      max-width: 300px;
+    }
+  }
+  
+  // テキストエリア
+  &__textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 15px;
+    color: #333333;
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    resize: vertical;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    line-height: 1.6;
+    
+    @include mq(md) {
+      font-size: 16px;
+      padding: 16px 20px;
+    }
+    
+    &::placeholder {
+      color: #999999;
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: #e74c3c;
+      box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+    }
+  }
+  
+  // ラジオボタングループ
+  &__radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    
+    @include mq(md) {
+      gap: 20px;
+    }
+    
+    // 3つ並びの場合
+    &--triple {
+      gap: 12px;
+      
+      @include mq(md) {
+        gap: 16px;
+      }
+    }
+  }
+  
+  // ラジオボタン
+  &__radio {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    
+    input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      
+      &:checked + span {
+        background: #e74c3c;
+        color: #ffffff;
+        border-color: #e74c3c;
+      }
+      
+      &:focus + span {
+        box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
+      }
+    }
+    
+    span {
+      display: inline-block;
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #333333;
+      background: #ffffff;
+      border: 2px solid #e0e0e0;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      
+      @include mq(md) {
+        font-size: 15px;
+        padding: 12px 28px;
+      }
+      
+      &:hover {
+        border-color: #e74c3c;
+        background: #fff5f4;
+      }
+    }
+  }
+  
+  // 送信ボタンエリア
+  &__submit {
+    margin-top: 50px;
+    text-align: center;
+    
+    @include mq(md) {
+      margin-top: 60px;
+    }
+  }
+  
+  // 送信ボタン
+  &__button {
+    display: inline-block;
+    min-width: 280px;
+    padding: 18px 50px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+    
+    @include mq(md) {
+      font-size: 18px;
+      padding: 20px 60px;
+      min-width: 320px;
+    }
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  // メッセージ
+  &__message {
+    padding: 20px 24px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.6;
+    
+    @include mq(md) {
+      font-size: 16px;
+      padding: 24px 30px;
+    }
+    
+    // 成功メッセージ
+    &--success {
+      color: #155724;
+      background: #d4edda;
+      border: 2px solid #c3e6cb;
+    }
+    
+    // エラーメッセージ
+    &--error {
+      color: #721c24;
+      background: #f8d7da;
+      border: 2px solid #f5c6cb;
+    }
+  }
+}
