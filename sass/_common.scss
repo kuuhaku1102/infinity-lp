@@ -1,0 +1,310 @@
+@charset "UTF-8";
+@use 'font' as f;
+@use 'colors' as c;
+@use "breakpoint" as bp;
+
+
+/* display
+=============================================== */
+.display-800 {
+  display: none;
+  @include bp.bp-800 {
+    display: inline-block;
+  }
+}
+
+.hidden-800 {
+  display: inline-block;
+  @include bp.bp-800 {
+    display: none;
+  }
+}
+.display-600 {
+  display: none;
+  @include bp.bp-600 {
+    display: inline-block;
+  }
+}
+
+.hidden-600 {
+  display: inline-block;
+  @include bp.bp-600 {
+    display: none;
+  }
+}
+
+/* style
+=============================================== */
+body {
+  @include f.font-family--sans();
+  font-size: 16px;
+}
+
+.inner {
+  margin-inline: auto;
+  max-width: 1290px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.fsz-06 {font-size: 0.6em;}
+.fsz-08 {font-size: 0.8em;}
+.fsz-12 {font-size: 1.2em;}
+.fsz-14 {font-size: 1.4em;}
+.fsz-15 {font-size: 1.5em;}
+.fsz-16 {font-size: 1.6em;}
+.fsz-18 {font-size: 1.8em;}
+.fsz-20 {font-size: 2em;}
+
+/* 共通タイトル
+----------------------------------------------------------------------*/
+.commonTitle {
+  @include f.font-family--serif();
+  margin-inline: auto;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__label {
+    font-size: 24px;
+    font-weight: 400;
+    position: relative;
+
+    @include bp.bp-1200 {
+      font-size: 20px;
+    }
+
+    @include bp.bp-800 {
+      font-size: 16px;
+    }
+
+    &::before {
+      position: absolute;
+      content: '';
+      width: 2.1em;
+      height: 1px;
+      background-color: c.$color-text;
+      top: 50%;
+      left: -2.5em;
+      transform: translateY(-50%);
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 2.1em;
+      height: 1px;
+      background-color: c.$color-text;
+      top: 50%;
+      right: -2.5em;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__title {
+    margin-top: 16px;
+    font-size: 56px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    span {
+      white-space: nowrap;
+    }
+
+    @include bp.bp-1400 {
+      font-size: 48px;
+    }
+
+    @include bp.bp-1200 {
+      font-size: 36px;
+    }
+
+    @include bp.bp-800 {
+      font-size: 28px;
+    }
+
+    @include bp.bp-600 {
+      font-size: 24px;
+    }
+
+    .is-red {
+      color: c.$color-red;
+    }
+  }
+
+  &__lead {
+    @include f.font-family--sans();
+    margin-top: 11px;
+    font-size: 24px;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @include bp.bp-1200 {
+      font-size: 20px;
+    }
+
+    @include bp.bp-800 {
+      font-size: 16px;
+    }
+  }
+}
+
+/* 共通ボタン
+----------------------------------------------------------------------*/
+.commonBtn {
+  position: relative;
+  z-index: 4;
+
+  &__bubble {
+    position: absolute;
+    z-index: 3;
+    padding: 0.41em 1em;
+    top: -1.4em;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: c.$color-yellow;
+    border-radius: 1em;
+    box-shadow: 0 4px 5px 0px rgba(#000, 0.25);
+    color: c.$color-red;
+    font-weight: bold;
+    font-size: 18px;
+    white-space: nowrap;
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 14px;
+      height: 7px;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      background-color: c.$color-yellow;
+      box-shadow: 0 4px 5px 0px rgba(#000, 0.25);
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -1px);
+    }
+
+    @include bp.bp-1200 {
+      font-size: 16px;
+    }
+
+    @include bp.bp-800 {
+      font-size: 14px;
+    }
+
+    @include bp.bp-600 {
+      font-size: 12px;
+    }
+  }
+
+  &__link {
+    width: fit-content;
+    display: block;
+    margin-inline: auto;
+    background-image: linear-gradient(to bottom, #EA553A, #BE1E01);
+    font-size: 32px;
+    color: c.$color-white;
+    padding: 1em 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 8px 4px 0 rgba(#000, 0.25);
+    position: relative;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(4px);
+      box-shadow: none;
+    }
+
+    @include bp.bp-1200 {
+      font-size: 24px;
+      box-shadow: 0 6px 3px 0 rgba(#000, 0.25);
+    }
+
+    @include bp.bp-800 {
+      font-size: 20px;
+      box-shadow: 0 4px 2px 0 rgba(#000, 0.25);
+    }
+
+    @include bp.bp-600 {
+      font-size: 16px;
+    }
+  }
+}
+
+/* 共通コンテンツタイトル
+----------------------------------------------------------------------*/
+.commonContentTitle {
+  margin-inline: auto;
+  width: 25em;
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+  padding: 14px 0;
+  background-color: #FFDDB7;
+  position: relative;
+
+  @include bp.bp-1200 {
+    font-size: 24px;
+  }
+
+  @include bp.bp-800 {
+    font-size: 18px;
+  }
+
+  @include bp.bp-600 {
+    width: 15em;
+  }
+
+  &::before {
+    position: absolute;
+    content: '';
+    width: 1em;
+    height: 100%;
+    background-color: #FFDDB7;
+    clip-path: polygon(100% 0, 100% 100%, 0 50%);
+    top: 0;
+    left: -1em;
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    width: 1em;
+    height: 100%;
+    background-color: #FFDDB7;
+    clip-path: polygon(0 0, 0 100%, 100% 50%);
+    top: 0;
+    right: -1em;
+  }
+}
+
+.commonContentLead {
+  margin-inline: auto;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1em;
+  font-size: 24px;
+  line-height: 1.6;
+  text-align: center;
+
+  @include bp.bp-1000 {
+    font-size: 20px;
+  }
+
+  @include bp.bp-800 {
+    font-size: 18px;
+  }
+
+  @include bp.bp-600 {
+    font-size: 16px;
+  }
+}

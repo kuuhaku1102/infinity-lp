@@ -1,0 +1,63 @@
+@use 'font' as f;
+@use 'colors' as c;
+@use "breakpoint" as bp;
+
+.works {
+  background-color: #F7F7F7;
+    padding: 80px 20px;
+
+  @include bp.bp-1000 {
+    padding: 60px 16px;
+  }
+
+  @include bp.bp-800 {
+    padding: 40px 12px;
+  }
+
+  &__content {
+
+    &-title {
+      margin-top: 80px;
+  
+      @include bp.bp-1000 {
+        margin-top: 60px;
+      }
+  
+      @include bp.bp-800 {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  &__slider {
+    position: relative;
+    padding: 40px 0;
+    overflow: hidden;
+
+    .swiper-slide {
+      flex-shrink: 0;
+      width: 600px;
+      height: auto; // 高さを揃える
+
+      @include bp.bp-1000 {
+        width: 500px;
+      }
+
+      @include bp.bp-800 {
+        align-items: stretch;
+        flex-direction: column;
+        width: 380px;
+      }
+
+      @include bp.bp-600 {
+        width: 300px;
+      }
+    }
+    
+    .swiper-pagination-bullet {
+      &.swiper-pagination-bullet-active {
+        background-color: c.$color-red;
+      }
+    }
+  }
+}

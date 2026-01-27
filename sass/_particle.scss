@@ -1,0 +1,84 @@
+:root {
+  --orb-size: 290px;
+  --particle-size: 3px
+}
+
+@media (max-width: 1000px) {
+  :root {
+    --orb-size: 220px;
+    --particle-size: 2px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --orb-size: 100px;
+    --particle-size: 2px;
+  }
+}
+
+// best in chrome
+$total: 1000; // total particles
+$time: 14s; 
+$base-hue: 0; // change for diff colors (180 is nice)
+// 追加：グラデーションの両端色
+$start-color: #1B2A74;
+$end-color:   #2278B1;
+
+.wrap {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  z-index: 1;
+  width: 0; 
+  height: 0; 
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  animation: rotate $time infinite linear; // rotate orb
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotateY(360deg) rotateX(360deg);
+  }
+}
+
+.c {
+  position: absolute;
+  width: var(--particle-size);
+  height: var(--particle-size);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+@for $i from 1 through $total {
+  $z: (random(360) * 1deg); // random angle to rotateZ
+  $y: (random(360) * 1deg); // random to rotateX
+
+  // ★ここが変更点：0%〜100% の割合を作る（1番目=0%、最後=100%）
+  $weight: (($i - 1) / ($total - 1)) * 100%;
+
+  // ★ここが変更点：2色を混ぜて中間色を作る
+  // mix(第1引数, 第2引数, weight)
+  // weight=0%  -> 第2引数（start-color）
+  // weight=100%-> 第1引数（end-color）
+  $particle-color: mix($end-color, $start-color, $weight);
+
+  .c:nth-child(#{$i}) {
+    animation: orbit#{$i} $time infinite;
+    animation-delay: ($i * .01s);
+    background-color: $particle-color; // ← hsla()をやめてこれにする
+  }
+
+  @keyframes orbit#{$i} {
+    20% { opacity: 1; }
+    30% { transform: rotateZ(-$z) rotateY($y) translateX(var(--orb-size)) rotateZ($z); }
+    80% {
+      transform: rotateZ(-$z) rotateY($y) translateX(var(--orb-size)) rotateZ($z);
+      opacity: 1;
+    }
+    100% {
+      transform: rotateZ(-$z) rotateY($y) translateX(calc((var(--orb-size) * 3))) rotateZ($z);
+    }
+  }
+}

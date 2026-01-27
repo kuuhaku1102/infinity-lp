@@ -1,0 +1,25 @@
+/* フォント設定
+  --------------------------------------------------- */
+  @mixin font-family--sans {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font-family--serif {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 可変のフォントサイズを計算
+--------------------------------------------------- */
+@function get_vw($size, $viewport) {
+	$rate: 100 / $viewport;
+	@return $rate * $size * 1vw;
+}
+
+@mixin fz_vw($min_size: 14, $font_size, $viewport: 1000) {
+	font-size: $font_size * 1px;
+	font-size: clamp($min_size * 1px, get_vw($font_size, $viewport), $font_size * 1px);
+}

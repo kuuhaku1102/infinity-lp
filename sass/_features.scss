@@ -1,0 +1,245 @@
+@use 'font' as f;
+@use 'colors' as c;
+@use "breakpoint" as bp;
+
+.features {
+  padding: 80px 20px;
+
+  @include bp.bp-1000 {
+    padding: 60px 16px;
+  }
+
+  @include bp.bp-800 {
+    padding: 40px 12px;
+  }
+
+  &__list {
+    margin-top: 80px;
+    margin-inline: auto;
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(3, 350px);
+    gap: 40px;
+
+    @include bp.bp-1200 {
+      grid-template-columns: repeat(3, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    @include bp.bp-1000 {
+      margin-top: 60px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    @include bp.bp-800 {
+      margin-top: 40px;
+    }
+  }
+
+  &__item {
+    flex: 1;
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 7;
+    gap: 0;
+    background-color: #FFF8E9;
+    padding-bottom: 40px;
+    position: relative;
+    z-index: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease-in-out;
+
+    &:nth-of-type(2) {
+      transition-delay: 0.3s;
+    }
+    &:nth-of-type(3) {
+      transition-delay: 0.6s;
+    }
+
+    &.is-appear {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      aspect-ratio: 350 / 15;
+      background: url('../img/card_shadow.webp') no-repeat center bottom/cover;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 100%);
+      z-index: -1;
+    }
+
+    &-title {
+      background-color: #FFDDB7;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 20px;
+      padding: 22px 0 22px 40px;
+      border-radius: 8px 8px 0 0;
+
+      @include bp.bp-1200 {
+        padding: 16px 0 16px 20px;
+      }
+
+      .num {
+        width: 51px;
+        height: 51px;
+        border-radius: 50%;
+        background-color: c.$color-red;
+        @include f.font-family--serif();
+        color: c.$color-white;
+        font-size: 32px;
+        line-height: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 0.1em;
+
+        @include bp.bp-1200 {
+          width: 32px;
+          height: 32px;
+          font-size: 20px;
+        }
+
+        @include bp.bp-1000 {
+          width: 28px;
+          height: 28px;
+          font-size: 18px;
+        }
+      }
+    }
+
+    h3 {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.5;
+
+      @include bp.bp-1200 {
+        font-size: 20px;
+      }
+
+      @include bp.bp-1000 {
+        font-size: 18px;
+      }
+    }
+
+    p {
+      line-height: 1.5;
+      padding: 16px 20px 0;
+
+      @include bp.bp-1000 {
+        font-size: 14px;
+      }
+
+      &.detail {
+        padding-block: 0px;
+      }
+    }
+
+    img {
+      padding: 16px 20px 0;
+    }
+
+    h4 {
+      margin-block: 20px 8px;
+      padding-inline: calc(20px + 1em) 20px;
+      font-size: 24px;
+      font-weight: 500;
+      position: relative;
+
+      @include bp.bp-1200 {
+        margin-block: 12px 6px;
+        font-size: 20px;
+      }
+
+      @include bp.bp-1000 {
+        font-size: 18px;
+      }
+
+      &::before {
+        position: absolute;
+        content: '';
+        width: 14px;
+        aspect-ratio: 1;
+        border-radius: 7px;
+        background-color: c.$color-red;
+        top: 0.4em;
+        left: 20px;
+
+        @include bp.bp-1200 {
+          width: 12px;
+        }
+        
+        @include bp.bp-1000 {
+          width: 8px;
+        }
+      }
+    }
+  }
+
+  &__message {
+    margin-top: 92px;
+    margin-inline: auto;
+    width: fit-content;
+    font-size: 24px;
+    text-align: center;
+    line-height: 1.6;
+    max-width: 25em;
+    position: relative;
+
+    @include bp.bp-1200 {
+      font-size: 20px;
+      margin-top: 72px;
+    }
+
+    @include bp.bp-800 {
+      font-size: 18px;
+      margin-top: 52px;
+    }
+
+    @include bp.bp-600 {
+      font-size: 16px;
+    }
+
+    &::before {
+      position: absolute;
+      content: '';
+      width: 1px;
+      height: 3em;
+      background-color: c.$color-text;
+      bottom: 0;
+      left: 0;
+      transform: translate(-1.5em, -10%) rotate(-24deg);
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 1px;
+      height: 3em;
+      background-color: c.$color-text;
+      bottom: 0;
+      right: 0;
+      transform: translate(1.5em, -10%) rotate(24deg);
+    }
+  }
+
+  &__btn {
+    margin-top: 80px;
+
+    @include bp.bp-1000 {
+      margin-top: 60px;
+    }
+
+    @include bp.bp-800 {
+      margin-top: 40px;
+    }
+  }
+}
