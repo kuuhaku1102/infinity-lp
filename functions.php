@@ -467,3 +467,12 @@ function infinity_get_works_slider02($post_id = null) {
 
     return $images;
 }
+
+// =====================================================
+// 契約前の事前ヒアリングフォーム
+// =====================================================
+
+/**
+ * 契約前の事前ヒアリングフォームの読み込み
+ */
+require_once get_template_directory() . '/inc/hearing-form.php';
