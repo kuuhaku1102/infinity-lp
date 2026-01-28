@@ -8,15 +8,14 @@
 
 // JavaScriptとCSSの読み込み
 function hearing_form_enqueue_scripts() {
-    if (has_shortcode(get_post()->post_content, 'hearing_form')) {
-        wp_enqueue_script(
-            'hearing-form-slider',
-            get_template_directory_uri() . '/js/hearing-form-slider.js',
-            array(),
-            '1.0.0',
-            true
-        );
-    }
+    // グローバルに読み込む(ショートコードがどこで使われても動作するように)
+    wp_enqueue_script(
+        'hearing-form-slider',
+        get_template_directory_uri() . '/js/hearing-form-slider.js',
+        array(),
+        '1.0.1',
+        true
+    );
 }
 add_action('wp_enqueue_scripts', 'hearing_form_enqueue_scripts');
 
