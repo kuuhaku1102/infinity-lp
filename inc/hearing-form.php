@@ -6,6 +6,20 @@
  * フォームの表示とメール送信機能を提供します。
  */
 
+// JavaScriptとCSSの読み込み
+function hearing_form_enqueue_scripts() {
+    if (has_shortcode(get_post()->post_content, 'hearing_form')) {
+        wp_enqueue_script(
+            'hearing-form-slider',
+            get_template_directory_uri() . '/js/hearing-form-slider.js',
+            array(),
+            '1.0.0',
+            true
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'hearing_form_enqueue_scripts');
+
 // ショートコードの登録
 add_shortcode('hearing_form', 'hearing_form_shortcode');
 
