@@ -222,16 +222,12 @@ get_header();
     <h3 class="commonContentTitle works__content-title">広告数値からの改善実績<br class="display-600">（CVR・CPA・ROAS向上）</h3>
 
     <div class="works__slider js-worksSlider01">
-      <?php $slides = SCF::get('works_slider01'); ?>
-      <?php if (!empty($slides) && is_array($slides)) : ?>
+      <?php $slides = infinity_get_works_slider01(); ?>
+      <?php if (!empty($slides)) : ?>
       <div class="swiper-wrapper">
         <?php foreach ($slides as $slide) : ?>
-          <?php
-            // 画像
-            $image = $slide['work_slider01_img'] ?? '';
-          ?>
         <div class="swiper-slide">
-          <img src="<?= wp_get_attachment_url( $image ); ?>" alt="">
+          <img src="<?= esc_url($slide['url']); ?>" alt="">
         </div>
         <?php endforeach; ?>
       </div>
@@ -247,17 +243,12 @@ get_header();
     <h3 class="commonContentTitle works__content-title">新規制作・立ち上げにおける<br class="display-600">成果事例</h3>
 
     <div class="works__slider js-worksSlider02">
-      <?php $slides = SCF::get('works_slider02'); ?>
-      <?php if (!empty($slides) && is_array($slides)) : ?>
+      <?php $slides = infinity_get_works_slider02(); ?>
+      <?php if (!empty($slides)) : ?>
       <div class="swiper-wrapper">
-
         <?php foreach ($slides as $slide) : ?>
-          <?php
-            // 画像
-            $image = $slide['work_slider02_img'] ?? '';
-          ?>
         <div class="swiper-slide">
-          <img src="<?= wp_get_attachment_url( $image ); ?>" alt="">
+          <img src="<?= esc_url($slide['url']); ?>" alt="">
         </div>
         <?php endforeach; ?>
       </div>

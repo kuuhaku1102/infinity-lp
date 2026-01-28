@@ -1,13 +1,12 @@
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 契約前の事前ヒアリングフォーム
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-@use 'breakpoint' as bp;
 
 .hearing-form {
   padding: 60px 0;
   background: #f8f9fa;
   
-  @include bp.bp-800 {
+  @include mq(md) {
     padding: 100px 0;
   }
   
@@ -20,7 +19,7 @@
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     
-    @include bp.bp-800 {
+    @include mq(md) {
       padding: 60px 80px;
     }
   }
@@ -35,7 +34,7 @@
     padding-bottom: 20px;
     border-bottom: 2px solid #e74c3c;
     
-    @include bp.bp-800 {
+    @include mq(md) {
       font-size: 32px;
       margin-bottom: 60px;
     }
@@ -60,7 +59,7 @@
     background: #f8f9fa;
     border-left: 4px solid #e74c3c;
     
-    @include bp.bp-800 {
+    @include mq(md) {
       font-size: 20px;
     }
   }
@@ -82,7 +81,7 @@
     color: #333333;
     margin-bottom: 10px;
     
-    @include bp.bp-800 {
+    @include mq(md) {
       font-size: 16px;
     }
   }
@@ -106,7 +105,7 @@
     margin-top: 8px;
     line-height: 1.6;
     
-    @include bp.bp-800 {
+    @include mq(md) {
       font-size: 14px;
     }
   }
@@ -122,7 +121,7 @@
     border-radius: 6px;
     transition: all 0.3s ease;
     
-    @include bp.bp-800 {
+    @include mq(md) {
       font-size: 16px;
       padding: 16px 20px;
     }
@@ -157,7 +156,7 @@
     font-family: inherit;
     line-height: 1.6;
     
-    @include bp.bp-800 {
+    @include mq(md) {
       font-size: 16px;
       padding: 16px 20px;
     }
@@ -179,7 +178,7 @@
     flex-wrap: wrap;
     gap: 16px;
     
-    @include bp.bp-800 {
+    @include mq(md) {
       gap: 20px;
     }
     
@@ -187,7 +186,7 @@
     &--triple {
       gap: 12px;
       
-      @include bp.bp-800 {
+      @include mq(md) {
         gap: 16px;
       }
     }
@@ -228,7 +227,7 @@
       border-radius: 50px;
       transition: all 0.3s ease;
       
-      @include bp.bp-800 {
+      @include mq(md) {
         font-size: 15px;
         padding: 12px 28px;
       }
@@ -245,7 +244,7 @@
     margin-top: 50px;
     text-align: center;
     
-    @include bp.bp-800 {
+    @include mq(md) {
       margin-top: 60px;
     }
   }
@@ -265,7 +264,7 @@
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
     
-    @include bp.bp-800 {
+    @include mq(md) {
       font-size: 18px;
       padding: 20px 60px;
       min-width: 320px;
@@ -290,7 +289,7 @@
     font-weight: 600;
     line-height: 1.6;
     
-    @include bp.bp-800 {
+    @include mq(md) {
       font-size: 16px;
       padding: 24px 30px;
     }
